@@ -3,24 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/D20Button"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d20"
+        tools:layout_editor_absoluteX="343dp"
+        tools:layout_editor_absoluteY="245dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/D12Button"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d12"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="245dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/D10Button"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d10"
+        tools:layout_editor_absoluteX="343dp"
+        tools:layout_editor_absoluteY="182dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/D8Button"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d8"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="182dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/D6Button"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d6"
+        tools:layout_editor_absoluteX="343dp"
+        tools:layout_editor_absoluteY="120dp"
+        tools:ignore="MissingConstraints" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/qtyTV"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:text="4"
+        android:textColor="#009688"
+        android:textColorLink="#FFFFFF"
+        android:textSize="36sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="380dp" />
+
+    <TextView
+        android:id="@+id/SelectedDieTV"
+        android:layout_width="282dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="D6"
+        android:textColor="#9C27B0"
+        android:textColorLink="@color/teal_200"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="381dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/RollsTV"
         android:layout_width="252dp"
         android:layout_height="53dp"
         android:text="2 + 5 + 4 + 2"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="766dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="119dp">
+        tools:layout_editor_absoluteY="117dp"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -130,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:translationY="">
+            android:translationY="0dp">
 
             <Button
                 android:id="@+id/BRoll"
@@ -151,13 +230,24 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TotalTV"
         android:layout_width="469dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="13"
         android:textSize="46sp"
         tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="56dp" />
+        tools:layout_editor_absoluteY="56dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/D4Button"
+        android:layout_width="65dp"
+        android:layout_height="62dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/d4"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="120dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
