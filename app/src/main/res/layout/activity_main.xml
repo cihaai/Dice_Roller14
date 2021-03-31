@@ -227,8 +227,8 @@
 
             <TextView
                 android:id="@+id/SelectedDieTV"
-                android:layout_width="262dp"
-                android:layout_height="45dp"
+                android:layout_width="261dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="D6"
                 android:textColor="#9C27B0"

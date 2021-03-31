@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView selectedDieTV;
     private TextView qtyTV;
     private TextView rollsTV;
+    private TextView TotalTV;
 
 
     @Override
@@ -29,26 +32,62 @@ public class MainActivity extends AppCompatActivity {
         this.currentqtyText = "";
         this.rollsTV = this.findViewById(R.id.RollsTV);
         this.rollsTV.setText("");
+        this.TotalTV = this.findViewById(R.id.TotalTV);
+        this.TotalTV.setText("");
+        this.selectedDieTV.setText("");
 
     }
 
     public void onRollButtonPressed(View v)
     {
         String qtyString = this.qtyTV.getText().toString();
+        String fullDiceString = this.selectedDieTV.getText().toString();
+        String errorMsg = "";
+        if(qtyString.length() == 0)
+        {
+            errorMsg = "You must enter a quantity before rolling.";
+        }
+        else if(fullDiceString.length()==0)
+        {
+            errorMsg = "You must select a Die before rolling.";
+        }
+
+        if (errorMsg.length() >0)
+        {
+            Toast t = Toast.makeText(this, errorMsg, Toast.LENGTH_LONG);
+            t.show();
+            return;
+        }
+
         int qtyInt = Integer.parseInt(qtyString);
         int[] theRolls = new int[qtyInt];
 
-        String fullDiceString = this.selectedDieTV.getText().toString();
+
         String trimmedDiceString = this.exactNumberOfSides(fullDiceString);
         int numberOfSidesInt = Integer.parseInt(trimmedDiceString);
         Random r = new Random();
 
+        int total = 0;
+        String individualRolls = "";
         for(int i = 0; i < qtyInt; i++)
         {
-            theRolls [i] = r.nextInt(numberOfSidesInt);
+            theRolls [i] = r.nextInt(numberOfSidesInt)+1;
             this.rollsTV.setText(theRolls[i]);
+            total = total + theRolls[i];
+
+            if(individualRolls.length() == 0)
+            {
+                individualRolls = "" + theRolls[i];
+            }
+            else
+            {
+                individualRolls = individualRolls + " + " + theRolls[i];
+            }
+            this.rollsTV.setText(individualRolls);
+            this.TotalTV.setText("" + total);
         }
-        return;
+
+
 
 
 
