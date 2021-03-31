@@ -4,79 +4,92 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class MainActivity extends AppCompatActivity {
-    private Button B0;
-    private Button B1;
-    private Button B2;
-    private Button B3;
-    private Button B4;
-    private Button B5;
-    private Button B6;
-    private Button B7;
-    private Button B8;
-    private Button B9;
+
+    private String currentqtyText;
+    private TextView selectedDieTV;
     private TextView qtyTV;
+    private TextView rollsTV;
 
 
-    public void onCreate()
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
     {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.B0 = this.findViewById(R.id.B0);
-        this.B1 = this.findViewById(R.id.B1);
-        this.B2 = this.findViewById(R.id.B2);
-        this.B3 = this.findViewById(R.id.B3);
-        this.B4 = this.findViewById(R.id.B4);
-        this.B5 = this.findViewById(R.id.B5);
-        this.B6 = this.findViewById(R.id.B6);
-        this.B7 = this.findViewById(R.id.B7);
-        this.B8 = this.findViewById(R.id.B8);
-        this.B9 = this.findViewById(R.id.B9)     ;
+        this.selectedDieTV = this.findViewById(R.id.SelectedDieTV);
         this.qtyTV = this.findViewById(R.id.qtyTV);
+        this.qtyTV.setText("");
+        this.currentqtyText = "";
+        this.rollsTV = this.findViewById(R.id.RollsTV);
+        this.rollsTV.setText("");
 
     }
 
+    public void onRollButtonPressed(View v)
+    {
+        String qtyString = this.qtyTV.getText().toString();
+        int qtyInt = Integer.parseInt(qtyString);
+        int[] theRolls = new int[qtyInt];
+
+        String fullDiceString = this.selectedDieTV.getText().toString();
+        String trimmedDiceString = this.exactNumberOfSides(fullDiceString);
+        int numberOfSidesInt = Integer.parseInt(trimmedDiceString);
+        Random r = new Random();
+
+        for(int i = 0; i < qtyInt; i++)
+        {
+            theRolls [i] = r.nextInt(numberOfSidesInt);
+            this.rollsTV.setText(theRolls[i]);
+        }
+        return;
+
+
+
+
+
+        //qtyInt * new Random(numberOfSidesInt) = new int[View v];
+
+        //this.RollsTV.setText(v.getTag().toString());
+
+    }
+
+    private String exactNumberOfSides(String dicetype)
+    {
+        String answer = "";
+        for(int i = 1; i < dicetype.length(); i++)
+        {
+            answer += dicetype.charAt(i);
+        }
+        return answer;
+    }
+    public void diceButtonPressed(View v)
+    {
+        this.selectedDieTV.setText(v.getTag().toString());
+
+    }
+
+    public void clearButtonPressed(View v)
+    {
+        this.currentqtyText = "";
+        this.qtyTV.setText(this.currentqtyText);
+    }
     public void qtyButtonPressed(View v)
     {
-        if(v == this.B0)
+        Button b = (Button)v;
+
+        if(this.currentqtyText.length() == 0 && b.getText().equals("0"))
         {
-            this.qtyTV.setText("0");
+            return;
         }
-        if(v == this.B1)
-        {
-        this.qtyTV.setText("1");
-        }
-        if(v == this.B2)
-        {
-        this.qtyTV.setText("2");
-        }
-        if(v == this.B3)
-        {
-        this.qtyTV.setText("3");
-        }
-        if(v == this.B4)
-        {
-        this.qtyTV.setText("4");
-        }
-        if(v == this.B5)
-        {
-        this.qtyTV.setText("5");
-        }
-        if(v == this.B6)
-        {
-        this.qtyTV.setText("7");
-        }
-        if(v == this.B8)
-        {
-        this.qtyTV.setText("8");
-        }
-        if(v == this.B9)
-        {
-        this.qtyTV.setText("9");
-        }
+        this.currentqtyText += b.getText();
+        this.qtyTV.setText(this.currentqtyText);
 
     }
 
